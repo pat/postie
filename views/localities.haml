@@ -1,0 +1,18 @@
+%h1 Localities by #{ @context }
+
+%table
+  %thead
+    %tr
+      %th Postcode
+      %th Suburb
+      %th State
+      %th Comment
+  %tbody
+  - @localities.each do |locality|
+    %tr
+      %td= locality.postcode
+      %td= locality.suburb
+      %td= locality.state
+      %td= locality.comments
+
+%p Service Provided by Pat Allan/<a href="http://freelancing-gods.com">Freelancing Gods</a>.
