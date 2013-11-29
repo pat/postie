@@ -1,4 +1,4 @@
-%h1 Localities by #{ @context }
+%h1 Localities by #{ context }
 
 %table
   %thead
@@ -8,7 +8,7 @@
       %th State
       %th Comment
   %tbody
-  - @localities.each do |locality|
+  - localities.each do |locality|
     %tr
       %td= locality.postcode
       %td= locality.suburb

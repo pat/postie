@@ -2,6 +2,7 @@ require 'rubygems'
 require 'bundler'
 
 Bundler.require :default, :test
+Sinatra::Application.environment = :test
 
 require './postie'
 

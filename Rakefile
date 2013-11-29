@@ -3,7 +3,7 @@ require 'bundler'
 
 Bundler.require :default, :test
 
-require 'rake'
+# require 'rake'
 require 'rspec/core/rake_task'
 
 RSpec::Core::RakeTask.new do |t|
@@ -20,7 +20,7 @@ require 'active_support/core_ext/module/delegation'
 namespace :db do
   task :migrate => :environment do
     require './config/active_record'
-    
+
     ActiveRecord::Migration.verbose = true
     ActiveRecord::Migrator.migrate 'db/migrate'
   end

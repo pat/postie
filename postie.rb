@@ -9,19 +9,19 @@ class Postie < Sinatra::Base
   get %r[^/(\d\d\d\d)(\.(.+))?$] do |postcode, path, extension|
     @context    = 'Postcode'
     @localities = Locality.where(:postcode => postcode)
-    
+
     handle_extension extension
   end
-  
+
   get %r[^/([^\.]+)(\.(.+))?$] do |suburb, path, extension|
     @context    = 'Suburb'
     @localities = Locality.where("LOWER(suburb) LIKE '%%%s%%'", suburb.downcase)
-    
+
     handle_extension extension
   end
-  
+
   private
-  
+
   def handle_extension(extension)
     case extension
     when 'js', 'json'
@@ -30,10 +30,11 @@ class Postie < Sinatra::Base
       content_type :xml
       @localities.to_xml
     else
-      haml :localities
+      haml :localities,
+        :locals => {:context => @context, :localities => @localities}
     end
   end
-  
+
   def handle_js
     callback = params.delete('callback')
     if callback
@@ -44,7 +45,7 @@ class Postie < Sinatra::Base
       localities_as_json
     end
   end
-  
+
   def localities_as_json
     @localities.collect { |locality| locality.serializable_hash }.to_json
   end
