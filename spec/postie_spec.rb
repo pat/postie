@@ -30,7 +30,8 @@ describe 'Postie' do
 
     it "should translate escaped characters" do
       Locality.should_receive(:where).
-        with("LOWER(suburb) LIKE '%%%s%%'", 'fitzroy north')
+        with("LOWER(suburb) LIKE '%%%s%%'", 'fitzroy north').
+        and_return([])
 
       get '/Fitzroy%20North'
     end
