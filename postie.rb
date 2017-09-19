@@ -6,15 +6,16 @@ class Postie < Sinatra::Base
     haml :index
   end
 
-  get %r[^/(\d\d\d\d)(\.(.+))?$] do |postcode, path, extension|
+  get %r[/(\d\d\d\d)(\.(.+))?] do |postcode, path, extension|
     @context    = 'Postcode'
     @localities = Locality.where(:postcode => postcode)
 
     handle_extension extension
   end
 
-  get %r[^/([^\.]+)(\.(.+))?$] do |suburb, path, extension|
+  get %r[/([^\.]+)(\.(.+))?] do |suburb, path, extension|
     @context    = 'Suburb'
+    suburb      = suburb.gsub("%20", " ")
     @localities = Locality.where("LOWER(suburb) LIKE '%%%s%%'", suburb.downcase)
 
     handle_extension extension
