@@ -1,0 +1,10 @@
+development:
+  adapter: postgresql
+  database: postie_development
+
+test:
+  adapter: postgresql
+  database: postie_test
+
+production:
+  url: <%= ENV["DATABASE_URL"] %>
