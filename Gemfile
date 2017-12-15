@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.4.2'
+ruby '2.4.3'
 
 gem 'thin'
 gem 'sinatra',       '2.0.0',    :require => 'sinatra/base'
