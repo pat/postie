@@ -1,4 +1,4 @@
-class CreateLocalities < ActiveRecord::Migration
+class CreateLocalities < ActiveRecord::Migration[4.2]
   def self.up
     create_table :localities do |t|
       t.column :postcode, :string, :null => false, :limit => 4
@@ -6,7 +6,7 @@ class CreateLocalities < ActiveRecord::Migration
       t.column :state,    :string, :null => false, :limit => 3
       t.column :comments, :string, :null => false
     end
-    
+
     add_index :localities, :postcode
     add_index :localities, :suburb
     add_index :localities, :state

@@ -24,7 +24,6 @@ GEM
       concurrent-ruby (~> 1.0)
     minitest (5.11.3)
     mustermann (1.0.2)
-    pg (0.21.0)
     rack (2.0.4)
     rack-protection (2.0.0)
       rack
@@ -49,6 +48,7 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.0)
       tilt (~> 2.0)
+    sqlite3 (1.3.13)
     temple (0.8.0)
     thin (1.7.2)
       daemons (~> 1.0, >= 1.0.9)
@@ -66,11 +66,11 @@ DEPENDENCIES
   activerecord (~> 5.1.4)
   activesupport (~> 5.1.4)
   haml (~> 5.0)
-  pg (~> 0.21.0)
   rack-test (= 0.6.2)
   rake
   rspec (= 3.7)
   sinatra (= 2.0.0)
+  sqlite3 (~> 1.3.13)
   thin
 
 RUBY VERSION

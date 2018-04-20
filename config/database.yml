@@ -1,10 +1,11 @@
 development:
-  adapter: postgresql
-  database: postie_development
+  adapter: sqlite3
+  database: db/postie_development.sqlite3
 
 test:
-  adapter: postgresql
-  database: postie_test
+  adapter: sqlite3
+  database: db/postie_test.sqlite3
 
 production:
-  url: <%= ENV["DATABASE_URL"] %>
+  adapter: sqlite3
+  database: db/postie_production.sqlite3
