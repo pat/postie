@@ -9,7 +9,7 @@ describe 'Postie' do
     it 'should respond to /' do
       get '/'
 
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
   end
 
@@ -17,7 +17,7 @@ describe 'Postie' do
     it 'should respond to /3000' do
       get '/3000'
 
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
   end
 
@@ -25,11 +25,11 @@ describe 'Postie' do
     it 'should respond to /Melbourne' do
       get '/Melbourne'
 
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "should translate escaped characters" do
-      Locality.should_receive(:where).
+      expect(Locality).to receive(:where).
         with("LOWER(suburb) LIKE '%%%s%%'", 'fitzroy north').
         and_return([])
 

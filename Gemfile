@@ -12,5 +12,5 @@ gem 'rake'
 
 group :test do
   gem 'rack-test', '0.6.2', :require => 'rack/test'
-  gem 'rspec',     '2.14.1'
+  gem 'rspec',     '3.7'
 end
