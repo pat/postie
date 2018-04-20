@@ -29,11 +29,9 @@ describe 'Postie' do
     end
 
     it "should translate escaped characters" do
-      expect(Locality).to receive(:where).
-        with("LOWER(suburb) LIKE '%%%s%%'", 'fitzroy north').
-        and_return([])
-
       get '/Fitzroy%20North'
+
+      expect(last_response.body).to include("FITZROY NORTH")
     end
   end
 end

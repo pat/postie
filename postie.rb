@@ -1,22 +1,23 @@
-require './config/active_record'
-require './models/locality'
+require './lib/locality'
+require './lib/localities'
 
 class Postie < Sinatra::Base
+  collection = Localities.new
+
   get '/' do
     haml :index
   end
 
   get %r[/(\d\d\d\d)(\.(.+))?] do |postcode, path, extension|
     @context    = 'Postcode'
-    @localities = Locality.where(:postcode => postcode)
+    @localities = collection.by_postcode(postcode)
 
     handle_extension extension
   end
 
   get %r[/([^\.]+)(\.(.+))?] do |suburb, path, extension|
     @context    = 'Suburb'
-    suburb      = suburb.gsub("%20", " ")
-    @localities = Locality.where("LOWER(suburb) LIKE '%%%s%%'", suburb.downcase)
+    @localities = collection.by_suburb suburb.gsub("%20", " ")
 
     handle_extension extension
   end
