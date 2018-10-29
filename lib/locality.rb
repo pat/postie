@@ -7,4 +7,13 @@ class Locality
     @state    = row["state"]
     @comments = row["comments"]
   end
+
+  def serializable_hash
+    {
+      "postcode" => postcode,
+      "suburb"   => suburb,
+      "state"    => state,
+      "comments" => comments
+    }
+  end
 end
