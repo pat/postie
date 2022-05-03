@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.5.3'
 
 gem 'thin'
-gem 'sinatra', '~> 2.0.0',  :require => 'sinatra/base'
+gem 'sinatra', '~> 2.2.0',  :require => 'sinatra/base'
 gem 'haml',    '~> 5.0'
 gem 'rake'
 
